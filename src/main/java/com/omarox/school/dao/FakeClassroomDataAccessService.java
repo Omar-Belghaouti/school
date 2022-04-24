@@ -43,9 +43,9 @@ public class FakeClassroomDataAccessService implements ClassroomDao {
     public int updateClassroomById(UUID id) {
         return selectClassroomById(id)
                 .map(classroom -> {
-                    int indexOfPersonToUpdate = DB.indexOf(classroom);
-                    if (indexOfPersonToUpdate >= 0) {
-                        DB.set(indexOfPersonToUpdate, new Classroom(id, classroom.getTeachers(), classroom.getStudents()));
+                    int indexOfClassroomToUpdate = DB.indexOf(classroom);
+                    if (indexOfClassroomToUpdate >= 0) {
+                        DB.set(indexOfClassroomToUpdate, new Classroom(id, classroom.getTeachers(), classroom.getStudents()));
                         return 1;
                     }
                     return 0;
