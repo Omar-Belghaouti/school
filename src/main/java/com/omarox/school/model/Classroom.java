@@ -1,5 +1,7 @@
 package com.omarox.school.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -8,7 +10,10 @@ public class Classroom {
     private final List<UUID> teachers;
     private final List<UUID> students;
 
-    public Classroom(UUID id, List<UUID> teachers, List<UUID> students) {
+    public Classroom(
+            @JsonProperty("id") UUID id,
+            @JsonProperty("teachers") List<UUID> teachers,
+            @JsonProperty("students") List<UUID> students) {
         this.id = id;
         this.teachers = teachers;
         this.students = students;
