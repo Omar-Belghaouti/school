@@ -12,6 +12,7 @@ public class Student {
     private final int age;
     private final List<UUID> teachers;
     private final List<UUID> subjects;
+    private final UUID classroomId;
 
     public Student(
             @JsonProperty("id") UUID id,
@@ -19,13 +20,15 @@ public class Student {
             @JsonProperty("lastName") String lastName,
             @JsonProperty("age") int age,
             @JsonProperty("teachers") List<UUID> teachers,
-            @JsonProperty("subjects") List<UUID> subjects) {
+            @JsonProperty("subjects") List<UUID> subjects,
+            @JsonProperty("classroomId") UUID classroomId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.teachers = teachers;
         this.subjects = subjects;
+        this.classroomId = classroomId;
     }
 
     public UUID getId() {
@@ -51,4 +54,9 @@ public class Student {
     public List<UUID> getSubjects() {
         return subjects;
     }
+
+    public UUID getClassroomId() {
+        return classroomId;
+    }
+
 }
