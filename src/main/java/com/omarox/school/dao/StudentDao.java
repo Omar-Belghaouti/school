@@ -20,5 +20,5 @@ public interface StudentDao {
 
     int deleteStudentById(UUID id);
 
-    int updateStudentById(UUID id);
+    int updateStudentById(UUID id, Student newStudent);
 }

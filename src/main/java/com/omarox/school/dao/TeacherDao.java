@@ -20,5 +20,5 @@ public interface TeacherDao {
 
     int deleteTeacherById(UUID id);
 
-    int updateTeacherById(UUID id);
+    int updateTeacherById(UUID id, Teacher newTeacher);
 }

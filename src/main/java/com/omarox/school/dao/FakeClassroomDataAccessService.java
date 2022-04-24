@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository("fakeDao")
+@Repository("fakeClassroomDao")
 public class FakeClassroomDataAccessService implements ClassroomDao {
     private static final List<Classroom> DB = new ArrayList<>();
     @Override
@@ -40,12 +40,12 @@ public class FakeClassroomDataAccessService implements ClassroomDao {
     }
 
     @Override
-    public int updateClassroomById(UUID id) {
+    public int updateClassroomById(UUID id, Classroom newClassroom) {
         return selectClassroomById(id)
                 .map(classroom -> {
                     int indexOfClassroomToUpdate = DB.indexOf(classroom);
                     if (indexOfClassroomToUpdate >= 0) {
-                        DB.set(indexOfClassroomToUpdate, new Classroom(id, classroom.getTeachers(), classroom.getStudents()));
+                        DB.set(indexOfClassroomToUpdate, new Classroom(id, newClassroom.getTeachers(), newClassroom.getStudents()));
                         return 1;
                     }
                     return 0;

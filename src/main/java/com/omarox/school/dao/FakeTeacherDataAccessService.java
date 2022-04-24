@@ -1,12 +1,14 @@
 package com.omarox.school.dao;
 
 import com.omarox.school.model.Teacher;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Repository("fakeTeacherDao")
 public class FakeTeacherDataAccessService implements TeacherDao {
     private static final List<Teacher> DB = new ArrayList<>();
 
@@ -45,17 +47,17 @@ public class FakeTeacherDataAccessService implements TeacherDao {
     }
 
     @Override
-    public int updateTeacherById(UUID id) {
+    public int updateTeacherById(UUID id, Teacher newTeacher) {
         return selectTeacherById(id)
                 .map(teacher -> {
                     int indexOfTeacherToUpdate = DB.indexOf(teacher);
                     if (indexOfTeacherToUpdate >= 0) {
                         DB.set(indexOfTeacherToUpdate, new Teacher(
                                 id,
-                                teacher.getFirstName(),
-                                teacher.getLastName(),
-                                teacher.getClassrooms(),
-                                teacher.getSubject()
+                                newTeacher.getFirstName(),
+                                newTeacher.getLastName(),
+                                newTeacher.getClassrooms(),
+                                newTeacher.getSubject()
                         ));
                         return 1;
                     }

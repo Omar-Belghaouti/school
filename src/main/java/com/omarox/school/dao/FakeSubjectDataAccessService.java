@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository("fakeDao")
+@Repository("fakeSubjectDao")
 public class FakeSubjectDataAccessService implements SubjectDao {
     private static final List<Subject> DB = new ArrayList<>();
 
@@ -41,12 +41,12 @@ public class FakeSubjectDataAccessService implements SubjectDao {
     }
 
     @Override
-    public int updateSubjectById(UUID id) {
+    public int updateSubjectById(UUID id, Subject newSubject) {
         return selectSubjectById(id)
                 .map(subject -> {
                     int indexOfSubjectToUpdate = DB.indexOf(subject);
                     if (indexOfSubjectToUpdate >= 0) {
-                        DB.set(indexOfSubjectToUpdate, new Subject(id, subject.getName()));
+                        DB.set(indexOfSubjectToUpdate, new Subject(id, newSubject.getName()));
                         return 1;
                     }
                     return 0;
