@@ -1,12 +1,14 @@
 package com.omarox.school.dao;
 
 import com.omarox.school.model.Subject;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Repository("fakeDao")
 public class FakeSubjectDataAccessService implements SubjectDao {
     private static final List<Subject> DB = new ArrayList<>();
 
